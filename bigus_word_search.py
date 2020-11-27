@@ -2,8 +2,13 @@ from copy import copy, deepcopy
 import random
 from math import sqrt
 import string
+import logging
 
-def read_from_txt(txt_file: str = "ww2_words.txt") -> list:
+logging.basicConfig(filename='word_search.log',
+                    format='%(asctime)s : %(levelname)s : %(message)s',
+                    level=logging.DEBUG)
+
+def read_from_txt(txt_file: str = "untitled1.txt") -> list:
     """Opens a text file to get all words"""
     with open(txt_file, "r") as words:
         lines = words.readlines()
@@ -15,6 +20,7 @@ class CreateWordSearch:
 
     def __init__(self, words: list, out_file: str = "smaller_out.txt"):
         self.words = words
+        logging.info(f"Word list has {len(self.words)} words.")
         self.search_words = self.reverse_words()
         self.grid = self.create_grid()
         self.fill_words()
@@ -29,25 +35,30 @@ class CreateWordSearch:
                 rev_words[idx] = word[::-1].replace(" ", "")
             else:
                 rev_words[idx] = word.replace(" ", "")
-                
+        
+        rev_words.sort(key=len, reverse = True)
+        
         return rev_words
 
     def create_grid(self) -> list:
-        """Find longest word and and 6 then create blank grid"""
-        #number_of_words = len(self.words)
-        
         str_lengths = [len(word) for word in self.search_words]
         total_chars = sum(str_lengths)
+        logging.info(f"Total characters in word list: {total_chars}")
         
-        array_chars = total_chars / 0.4
+        array_chars = total_chars / 0.65
         char_dim = int(sqrt(array_chars))
-                
+        logging.info(f"Dimesion based on word characters at 65% of available spaces: {char_dim}")
+        
         longest_word_len = len(max(self.search_words, key=len))
         buffer = int(longest_word_len * 0.3)
         
         long_word_dim = longest_word_len + buffer
-                
-        self.grid_dimension = char_dim if char_dim >= long_word_dim else long_word_dim
+        logging.info(f"Dimension based on longest word: {long_word_dim}")
+        
+        #self.grid_dimension = char_dim if char_dim >= long_word_dim else long_word_dim
+        self.grid_dimension = 8
+        logging.info(f"Chosen maximum dimension: {self.grid_dimension}")
+        
         grid = []
         for _ in range(self.grid_dimension):
             grid.append(list("_" * self.grid_dimension))
@@ -58,17 +69,19 @@ class CreateWordSearch:
         for word in self.search_words:        
 
             is_valid = False
+            counter = 0
             while not is_valid:
+                counter += 1
                 # pick orientation of word (vertical, horizontal, diagonal)
                 orientation = random.choice(['vertical', 'horizontal', 'diagonal'])
                 
                 # pick a starting point for the word that won't bust size of grid
-                if orientation == 'vertical' or orientation == 'diagonal':
+                if (orientation == 'vertical' or orientation == 'diagonal'):
                     start_row = random.randint(0, self.grid_dimension - len(word))
                 else:
                     start_row = random.randint(0, self.grid_dimension - 1)
 
-                if orientation == 'horizontal' or orientation == 'diagonal':
+                if (orientation == 'horizontal' or orientation == 'diagonal'):
                     start_col = random.randint(0, self.grid_dimension - len(word))
                 else:
                     start_col = random.randint(0, self.grid_dimension - 1)
@@ -80,6 +93,10 @@ class CreateWordSearch:
                     is_valid = self.check_horizontal((start_row, start_col), word)
                 elif orientation == 'diagonal':
                     is_valid = self.check_diagonal((start_row, start_col), word)
+            
+            logging.info(f"Took {counter} attempts to find a valid spot for {word}")
+        
+        self.before_fill = deepcopy(self.grid)
 
     def check_vertical(self, start: tuple, word: str) -> bool:
         test_grid = deepcopy(self.grid)
