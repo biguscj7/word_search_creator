@@ -1,0 +1,12 @@
+1.man
+2.woman
+3.sloth
+4.waxy
+5.echo
+6.taste
+7.sense
+8.lucid
+9.testy
+10.repeat
+11.lost
+12.help
