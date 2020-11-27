@@ -1,0 +1,13 @@
+2020-11-27 16:24:37,085 : INFO : Word list has 2 words.
+2020-11-27 16:25:23,630 : INFO : Total characters in word list: 16
+2020-11-27 16:25:23,630 : INFO : Dimesion based on word characters at 65% of available spaces: 4
+2020-11-27 16:25:23,630 : INFO : Dimension based on longest word: 10
+2020-11-27 16:25:23,630 : INFO : Chosen maximum dimension: 8
+2020-11-27 16:27:15,968 : INFO : Took 1 attempts to find a valid spot for DROWGNOL
+2020-11-27 16:32:07,735 : INFO : Word list has 2 words.
+2020-11-27 16:32:20,975 : INFO : Total characters in word list: 16
+2020-11-27 16:32:20,976 : INFO : Dimesion based on word characters at 65% of available spaces: 4
+2020-11-27 16:32:20,976 : INFO : Dimension based on longest word: 10
+2020-11-27 16:32:20,976 : INFO : Chosen maximum dimension: 8
+2020-11-27 16:32:43,645 : INFO : Took 1 attempts to find a valid spot for LONGWORD
+2020-11-27 16:34:10,583 : INFO : Took 2 attempts to find a valid spot for LONGWORD
