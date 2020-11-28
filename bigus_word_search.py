@@ -13,7 +13,7 @@ logging.basicConfig(
 )
 
 
-def read_from_txt(txt_file: str = "untitled1.txt") -> list:
+def read_from_txt(txt_file: str = "untitled.txt") -> list:
     """Opens a text file to get all words, called from outside the class instantiation"""
     with open(txt_file, "r") as words:
         lines = words.readlines()
@@ -25,7 +25,7 @@ def read_from_txt(txt_file: str = "untitled1.txt") -> list:
 class CreateWordSearch:
     """Class that generates a particular word search"""
 
-    def __init__(self, words: list, out_file: str = "smaller_out.txt"):
+    def __init__(self, words: list, out_file: str = "intx_test.txt"):
         self.words = words
         logging.info(f"Word list has {len(self.words)} words.")
         self.search_words = self.reverse_sort_words()
@@ -56,10 +56,10 @@ class CreateWordSearch:
         total_chars = sum(str_lengths)
         logging.info(f"Total characters in word list: {total_chars}")
 
-        array_chars = total_chars / 0.65
+        array_chars = total_chars / 0.70
         char_dim = int(sqrt(array_chars))
         logging.info(
-            f"Dimesion based on word characters at 65% of available spaces: {char_dim}"
+            f"Dimesion based on word characters at 70% of available spaces: {char_dim}"
         )
 
         longest_word_len = len(max(self.search_words, key=len))
@@ -80,87 +80,116 @@ class CreateWordSearch:
         """Loops through words and adds them to the grid"""
         for word in self.search_words:
 
-            is_valid = False
-            counter = 0
-            while not is_valid:
-                counter += 1
-                # pick orientation of word (vertical, horizontal, diagonal)
-                orientation = random.choice(["vertical", "horizontal", "diagonal"])
+            # pick orientation of word (vertical, horizontal, diagonal)
+            orientation = random.choice(["vertical", "horizontal", "diagonal"])
 
-                # pick a starting point for the word that won't bust size of grid
-                if orientation == "vertical" or orientation == "diagonal":
-                    start_row = random.randint(0, self.grid_dimension - len(word))
-                else:
-                    start_row = random.randint(0, self.grid_dimension - 1)
+            options = self.assess_options(orientation, word)
 
-                if orientation == "horizontal" or orientation == "diagonal":
-                    start_col = random.randint(0, self.grid_dimension - len(word))
-                else:
-                    start_col = random.randint(0, self.grid_dimension - 1)
+            if options is None:
+                logging.warning(f"Unable to find valid placement for '{word}'")
+                raise Exception()
 
-                # check if placement is viable (no conflicting letters)
-                if orientation == "vertical":
-                    is_valid = self.check_vertical((start_row, start_col), word)
-                elif orientation == "horizontal":
-                    is_valid = self.check_horizontal((start_row, start_col), word)
-                elif orientation == "diagonal":
-                    is_valid = self.check_diagonal((start_row, start_col), word)
+            intx_options = [option for option in options if option[2] > 0]
 
-                if counter > 150:
-                    raise Unsolveable
-
-            logging.info(f"Took {counter} attempts to find a valid spot for {word}")
+            if intx_options:  # there's at least one valid option
+                self.place_word(random.choice(intx_options), orientation, word)
+            else:
+                self.place_word(random.choice(options), orientation, word)
 
         self.before_fill = deepcopy(self.grid)
 
-    def check_vertical(self, start: tuple, word: str) -> bool:
-        """Executes logic to attempt vertical placement of word"""
-        test_grid = deepcopy(self.grid)  # make copy of grid for test purposes
+    def assess_options(self, orientation: str, word: str) -> list:
+        """Assesses all possible placements of a word and returns a list with viable
+        orientations & number of intersections"""
+
+        valid_starts = []  # will store in tuple (row, col, intx)
+
+        if orientation == "horizontal":
+            max_row = self.grid_dimension - 1
+            max_col = self.grid_dimension - len(word)
+
+            for row in range(0, max_row):
+                for col in range(0, max_col):
+                    intx = self.check_horizontal((row, col), word)
+                    if intx >= 0:
+                        valid_starts.append((row, col, intx))
+
+        elif orientation == "vertical":
+            max_row = self.grid_dimension - len(word)
+            max_col = self.grid_dimension - 1
+
+            for row in range(0, max_row):
+                for col in range(0, max_col):
+                    intx = self.check_vertical((row, col), word)
+                    if intx >= 0:
+                        valid_starts.append((row, col, intx))
+
+        else:
+            max_row = self.grid_dimension - len(word)
+            max_col = self.grid_dimension - len(word)
+
+            for row in range(0, max_row):
+                for col in range(0, max_col):
+                    intx = self.check_diagonal((row, col), word)
+                    if intx >= 0:
+                        valid_starts.append((row, col, intx))
+
+        return valid_starts
+
+    def check_vertical(self, start: tuple, word: str) -> int:
+        """Attempts to place word vertically and returns number of intersections"""
+        intx = 0
 
         for idx, letter in enumerate(word):
             if (
-                test_grid[start[0] + idx][start[1]] != "_"
-                and test_grid[start[0] + idx][start[1]] != letter
+                self.grid[start[0] + idx][start[1]] != "_"
+                and self.grid[start[0] + idx][start[1]] != letter
             ):
-                return False  # early return if there's a conflict, edited test_grid 'disappears'
-            else:
-                test_grid[start[0] + idx][start[1]] = letter
+                return -1
+            elif self.grid[start[0] + idx][start[1]] == letter:
+                intx += 1
 
-        # if loop hasn't broken for a conflict, write the modified grid back to instance grid
-        self.grid = test_grid
-        return True
+        return intx
 
-    def check_horizontal(self, start: tuple, word: str) -> bool:
-        """Executes logic to attempt horizontal placement of word"""
-        test_grid = deepcopy(self.grid)
+    def check_horizontal(self, start: tuple, word: str) -> int:
+        """Attempts to place word horizontally and returns number of intersections"""
+        intx = 0
 
         for idx, letter in enumerate(word):
             if (
                 self.grid[start[0]][start[1] + idx] != "_"
                 and self.grid[start[0]][start[1] + idx] != letter
             ):
-                return False
-            else:
-                test_grid[start[0]][start[1] + idx] = letter
+                return -1
+            elif self.grid[start[0]][start[1] + idx] == letter:
+                intx += 1
 
-        self.grid = test_grid
-        return True
+        return intx
 
-    def check_diagonal(self, start: tuple, word: str) -> bool:
-        """Executes logic to attempt diagonal placement of word"""
-        test_grid = deepcopy(self.grid)
+    def check_diagonal(self, start: tuple, word: str) -> int:
+        """Attempts to place word diagonally and returns number of intersections"""
+        intx = 0
 
         for idx, letter in enumerate(word):
             if (
                 self.grid[start[0] + idx][start[1] + idx] != "_"
                 and self.grid[start[0] + idx][start[1] + idx] != letter
             ):
-                return False
-            else:
-                test_grid[start[0] + idx][start[1] + idx] = letter
+                return -1
+            elif self.grid[start[0] + idx][start[1] + idx] == letter:
+                intx += 1
 
-        self.grid = test_grid
-        return True
+        return intx
+
+    def place_word(self, start: tuple, orientation: str, word: str):
+        """Places word on the grid from a start point and given orientation"""
+        for idx, letter in enumerate(word):
+            if orientation == "vertical":
+                self.grid[start[0] + idx][start[1]] = letter
+            elif orientation == "horizontal":
+                self.grid[start[0]][start[1] + idx] = letter
+            else:
+                self.grid[start[0] + idx][start[1] + idx] = letter
 
     def fill_grid(self):
         """Fill the empty spots on the grid with random letters"""
@@ -186,4 +215,5 @@ class CreateWordSearch:
 
 
 if __name__ == "__main__":
-    test = CreateWordSearch(["LONGWORD", "LONGWORD"])
+    word_list = read_from_txt("US_States_Cities.txt")
+    test = CreateWordSearch(word_list, "States_cities_puzzle.txt")

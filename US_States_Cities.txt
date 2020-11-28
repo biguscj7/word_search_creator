@@ -1,0 +1,185 @@
+1.Las Vegas
+2.Sacramento
+3.San Diego
+4.San Francisco
+5.Los Angeles
+6.New York City
+7.Boise
+8.Raleigh
+9.Salem
+10.Montana
+11.Shreveport
+12.Baton Rouge
+13.New Orleans
+14.Green Bay
+15.Madison
+16.Wisconsin
+17.Chicago
+18.Alaska
+15.Anchorage
+16.Hawaii
+17.Honolulu
+18.Maui
+19.Kansas City
+20.Oklahoma City 
+21.Missouri
+22.Jefferson City
+23.Cincinatti
+24.Columbus
+25.Winnipeg
+26.Tacoma
+27.Olympia
+28.Spokane
+29.Seattle
+30.Yakima
+31.Portland
+32.Bend
+33.Eugene
+34.Medford
+35.Oregon
+36.San Jose
+37.Fresno
+38.San Bernardino
+39.Eureka
+40.Bakersfield
+41.Long Beach
+42.Hilo
+43.Lewiston
+44.Idaho
+45.Reno
+46.Carson City
+47.Nevada
+48.Salt Lake City
+49.Ogden
+50.Provo
+51.Utah
+52.Washington
+53.Flagstaff
+54.Phoenix
+55.Tucson
+56.Arizona
+57.New Mexico
+58.Albuquerque
+59.Colorado Springs
+60.Denver
+61.Colorado
+62.Casper
+63.Cheyenne
+64.Wyoming
+65.Idaho Falls
+66.Wyoming
+67.Butte
+68.Helena
+69.Missoula
+70.Billings
+71.Montana
+72.Abilene
+73.Odessa
+74.Amarillo
+75.Lubbock
+76.Dallas
+77.Austin
+78.San Antonio
+79.Laredo
+80.Waco
+81.Houston
+82.Corpus Christi
+83.Texas
+84.Oklahoma
+85.Santa Fe
+86.Tulsa
+87.Topeka
+88.Wichita
+89.Kansas
+90.Omaha
+91.Lincoln
+92.Nebraska
+93.Rapid City
+94.Pierre
+95.South Dakota
+96.Bismark
+97.Minot
+98.North Dakota
+99.St Paul
+100.Minneapolis
+101.Duluth
+102.Fargo
+103.Minnesota
+104.Des Moines
+105.Iowa
+106.Little Rock
+107.Arkansas
+108.St Louis
+109.Springfield
+110.Illinois
+111.Mississippi
+112.Jackson
+113.Indianapolis
+114.Indiana
+115.Louisville
+116.Frankfort
+117.Kentucky
+118.Nashville
+119.Memphis
+120.Knoxville
+121.Tennessee
+122.Birmingham
+123.Montgomery
+124.Mobile
+125.Alabama
+126.Milwaukee
+127.Lansing
+128.Detroit
+130.Wisconsin
+131.Michigan
+132.Ohio
+133.Atlanta
+134.Georgia
+135.Tallahassee
+136.Orlando
+137.Jacksonville
+138.Tampa
+139.Miami
+140.Florida
+141.Columbia
+142.Charlestown
+143.South Carolina
+144.Greensboro
+145.North Carolina
+146.Richmond
+147.Norfolk
+148.Virginia
+149.Annapolis
+150.Maryland
+151.Dover
+152.Delaware
+153.West Virginia
+154.Savannah
+155.Baltimore
+156.Harrisburg
+157.Pennsylvania
+158.Pittsburgh
+159.Cleveland
+160.Philadelphia
+161.New York
+162.New Jersey
+163.Trenton
+164.Hartford
+165.Connecticut
+166.Providence
+167.Rhode Island
+168.Rochester
+169.Buffalo
+170.Albany
+171.Boston
+172.Massachusetts
+173.Concord
+174.New Hampshire
+175.Montpelier
+176.Vermont
+177.Augusta
+178.Bangor
+179.Maine
+180.Yuma
+181.Puerto Rico
+182.San Juan

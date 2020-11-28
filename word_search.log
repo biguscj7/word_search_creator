@@ -11,3 +11,100 @@
 2020-11-27 16:32:20,976 : INFO : Chosen maximum dimension: 8
 2020-11-27 16:32:43,645 : INFO : Took 1 attempts to find a valid spot for LONGWORD
 2020-11-27 16:34:10,583 : INFO : Took 2 attempts to find a valid spot for LONGWORD
+2020-11-28 12:03:22,188 : INFO : Word list has 12 words.
+2020-11-28 12:03:22,196 : INFO : Total characters in word list: 55
+2020-11-28 12:03:22,196 : INFO : Dimesion based on word characters at 65% of available spaces: 9
+2020-11-28 12:03:22,196 : INFO : Dimension based on longest word: 7
+2020-11-28 12:03:22,196 : INFO : Chosen maximum dimension: 9
+2020-11-28 12:05:28,377 : INFO : Word list has 12 words.
+2020-11-28 12:05:28,377 : INFO : Total characters in word list: 55
+2020-11-28 12:05:28,377 : INFO : Dimesion based on word characters at 65% of available spaces: 9
+2020-11-28 12:05:28,377 : INFO : Dimension based on longest word: 7
+2020-11-28 12:05:28,378 : INFO : Chosen maximum dimension: 9
+2020-11-28 12:06:28,790 : INFO : Word list has 12 words.
+2020-11-28 12:06:28,790 : INFO : Total characters in word list: 55
+2020-11-28 12:06:28,791 : INFO : Dimesion based on word characters at 65% of available spaces: 9
+2020-11-28 12:06:28,791 : INFO : Dimension based on longest word: 7
+2020-11-28 12:06:28,791 : INFO : Chosen maximum dimension: 9
+2020-11-28 12:06:28,791 : WARNING : Unable to find valid placement
+2020-11-28 12:07:17,744 : INFO : Word list has 12 words.
+2020-11-28 12:07:17,744 : INFO : Total characters in word list: 55
+2020-11-28 12:07:17,745 : INFO : Dimesion based on word characters at 65% of available spaces: 9
+2020-11-28 12:07:17,745 : INFO : Dimension based on longest word: 7
+2020-11-28 12:07:17,745 : INFO : Chosen maximum dimension: 9
+2020-11-28 12:07:17,745 : WARNING : Unable to find valid placement
+2020-11-28 12:08:13,509 : INFO : Word list has 12 words.
+2020-11-28 12:08:13,510 : INFO : Total characters in word list: 55
+2020-11-28 12:08:13,510 : INFO : Dimesion based on word characters at 40% of available spaces: 11
+2020-11-28 12:08:13,510 : INFO : Dimension based on longest word: 7
+2020-11-28 12:08:13,510 : INFO : Chosen maximum dimension: 11
+2020-11-28 12:08:13,511 : WARNING : Unable to find valid placement
+2020-11-28 12:09:09,343 : INFO : Word list has 12 words.
+2020-11-28 12:09:09,343 : INFO : Total characters in word list: 55
+2020-11-28 12:09:09,343 : INFO : Dimesion based on word characters at 40% of available spaces: 11
+2020-11-28 12:09:09,343 : INFO : Dimension based on longest word: 7
+2020-11-28 12:09:09,343 : INFO : Chosen maximum dimension: 11
+2020-11-28 12:09:09,345 : WARNING : Unable to find valid placement for 'REPEAT'
+2020-11-28 12:10:18,922 : INFO : Word list has 12 words.
+2020-11-28 12:10:18,922 : INFO : Total characters in word list: 55
+2020-11-28 12:10:18,922 : INFO : Dimesion based on word characters at 30% of available spaces: 13
+2020-11-28 12:10:18,923 : INFO : Dimension based on longest word: 7
+2020-11-28 12:10:18,923 : INFO : Chosen maximum dimension: 13
+2020-11-28 12:10:18,923 : WARNING : Unable to find valid placement for 'REPEAT'
+2020-11-28 12:14:54,264 : INFO : Word list has 12 words.
+2020-11-28 12:14:54,265 : INFO : Total characters in word list: 55
+2020-11-28 12:14:54,266 : INFO : Dimesion based on word characters at 30% of available spaces: 13
+2020-11-28 12:14:54,266 : INFO : Dimension based on longest word: 7
+2020-11-28 12:14:54,266 : INFO : Chosen maximum dimension: 13
+2020-11-28 12:17:20,879 : INFO : Word list has 12 words.
+2020-11-28 12:17:20,879 : INFO : Total characters in word list: 55
+2020-11-28 12:17:20,880 : INFO : Dimesion based on word characters at 30% of available spaces: 13
+2020-11-28 12:17:20,880 : INFO : Dimension based on longest word: 7
+2020-11-28 12:17:20,880 : INFO : Chosen maximum dimension: 13
+2020-11-28 12:17:37,923 : DEBUG : diff parser start
+2020-11-28 12:17:37,923 : DEBUG : line_lengths old: 2; new: 2
+2020-11-28 12:17:37,923 : DEBUG : -> code[equal] old[1:1] new[1:1]
+2020-11-28 12:17:37,924 : DEBUG : copy old[1:1] new[1:1]
+2020-11-28 12:17:37,924 : DEBUG : -> code[replace] old[2:2] new[2:2]
+2020-11-28 12:17:37,925 : DEBUG : parse_part from 2 to 2 (to 1 in part parser)
+2020-11-28 12:17:37,925 : DEBUG : diff parser end
+2020-11-28 12:19:52,590 : INFO : Word list has 12 words.
+2020-11-28 12:19:52,591 : INFO : Total characters in word list: 55
+2020-11-28 12:19:52,593 : INFO : Dimesion based on word characters at 30% of available spaces: 13
+2020-11-28 12:19:52,594 : INFO : Dimension based on longest word: 7
+2020-11-28 12:19:52,594 : INFO : Chosen maximum dimension: 13
+2020-11-28 12:21:31,504 : INFO : Word list has 12 words.
+2020-11-28 12:21:31,506 : INFO : Total characters in word list: 55
+2020-11-28 12:21:31,507 : INFO : Dimesion based on word characters at 30% of available spaces: 13
+2020-11-28 12:21:31,507 : INFO : Dimension based on longest word: 7
+2020-11-28 12:21:31,507 : INFO : Chosen maximum dimension: 13
+2020-11-28 12:27:43,253 : INFO : Word list has 12 words.
+2020-11-28 12:27:43,255 : INFO : Total characters in word list: 55
+2020-11-28 12:27:43,255 : INFO : Dimesion based on word characters at 30% of available spaces: 13
+2020-11-28 12:27:43,255 : INFO : Dimension based on longest word: 7
+2020-11-28 12:27:43,256 : INFO : Chosen maximum dimension: 13
+2020-11-28 12:34:24,821 : INFO : Word list has 12 words.
+2020-11-28 12:34:24,822 : INFO : Total characters in word list: 55
+2020-11-28 12:34:24,823 : INFO : Dimesion based on word characters at 30% of available spaces: 13
+2020-11-28 12:34:24,823 : INFO : Dimension based on longest word: 7
+2020-11-28 12:34:24,823 : INFO : Chosen maximum dimension: 13
+2020-11-28 12:45:12,798 : INFO : Word list has 185 words.
+2020-11-28 12:45:12,799 : INFO : Total characters in word list: 1477
+2020-11-28 12:45:12,800 : INFO : Dimesion based on word characters at 50% of available spaces: 54
+2020-11-28 12:45:12,800 : INFO : Dimension based on longest word: 19
+2020-11-28 12:45:12,800 : INFO : Chosen maximum dimension: 54
+2020-11-28 12:45:52,102 : INFO : Word list has 185 words.
+2020-11-28 12:45:52,103 : INFO : Total characters in word list: 1477
+2020-11-28 12:45:52,103 : INFO : Dimesion based on word characters at 60% of available spaces: 49
+2020-11-28 12:45:52,104 : INFO : Dimension based on longest word: 19
+2020-11-28 12:45:52,104 : INFO : Chosen maximum dimension: 49
+2020-11-28 12:46:18,273 : INFO : Word list has 185 words.
+2020-11-28 12:46:18,273 : INFO : Total characters in word list: 1477
+2020-11-28 12:46:18,273 : INFO : Dimesion based on word characters at 65% of available spaces: 47
+2020-11-28 12:46:18,274 : INFO : Dimension based on longest word: 19
+2020-11-28 12:46:18,274 : INFO : Chosen maximum dimension: 47
+2020-11-28 12:46:47,421 : INFO : Word list has 185 words.
+2020-11-28 12:46:47,421 : INFO : Total characters in word list: 1477
+2020-11-28 12:46:47,422 : INFO : Dimesion based on word characters at 70% of available spaces: 45
+2020-11-28 12:46:47,422 : INFO : Dimension based on longest word: 19
+2020-11-28 12:46:47,422 : INFO : Chosen maximum dimension: 45
