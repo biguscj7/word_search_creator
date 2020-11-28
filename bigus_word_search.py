@@ -4,6 +4,8 @@ from math import sqrt
 import string
 import logging
 
+# TODO: Update the reader fuction to handle multiple .txt file formats of words
+
 logging.basicConfig(
     filename="word_search.log",
     format="%(asctime)s : %(levelname)s : %(message)s",
@@ -12,14 +14,12 @@ logging.basicConfig(
 
 
 def read_from_txt(txt_file: str = "untitled1.txt") -> list:
-    """Opens a text file to get all words"""
+    """Opens a text file to get all words, called from outside the class instantiation"""
     with open(txt_file, "r") as words:
         lines = words.readlines()
-        return [line.split(".")[1].strip().upper() for line in lines]
-
-
-class Unsolveable(Error):
-    pass
+        return [
+            line.split(".")[1].strip().upper() for line in lines
+        ]  # removes leading numbering w/ following '.'
 
 
 class CreateWordSearch:
@@ -28,14 +28,15 @@ class CreateWordSearch:
     def __init__(self, words: list, out_file: str = "smaller_out.txt"):
         self.words = words
         logging.info(f"Word list has {len(self.words)} words.")
-        self.search_words = self.reverse_words()
+        self.search_words = self.reverse_sort_words()
         self.grid = self.create_grid()
         self.fill_words()
         self.fill_grid()
         self.write_grid(out_file)
         self.write_words(out_file)
 
-    def reverse_words(self, rev_percent: int = 25):
+    def reverse_sort_words(self, rev_percent: int = 25):
+        """Reverses a percentage of the words and returns a list sorted from longest to shortest words to help with filling the sheet"""
         rev_words = deepcopy(self.words)
         for idx, word in enumerate(rev_words):
             if random.randint(0, 100) <= rev_percent:
@@ -50,6 +51,7 @@ class CreateWordSearch:
         return rev_words
 
     def create_grid(self) -> list:
+        """Builds an 'empty' grid based on characteristics of the word list supplied."""
         str_lengths = [len(word) for word in self.search_words]
         total_chars = sum(str_lengths)
         logging.info(f"Total characters in word list: {total_chars}")
@@ -75,7 +77,7 @@ class CreateWordSearch:
         return grid
 
     def fill_words(self):
-        """Will loop through words and add them to the grid"""
+        """Loops through words and adds them to the grid"""
         for word in self.search_words:
 
             is_valid = False
@@ -112,14 +114,15 @@ class CreateWordSearch:
         self.before_fill = deepcopy(self.grid)
 
     def check_vertical(self, start: tuple, word: str) -> bool:
-        test_grid = deepcopy(self.grid)
+        """Executes logic to attempt vertical placement of word"""
+        test_grid = deepcopy(self.grid)  # make copy of grid for test purposes
 
         for idx, letter in enumerate(word):
             if (
                 test_grid[start[0] + idx][start[1]] != "_"
                 and test_grid[start[0] + idx][start[1]] != letter
             ):
-                return False  # early return if there's a conflict
+                return False  # early return if there's a conflict, edited test_grid 'disappears'
             else:
                 test_grid[start[0] + idx][start[1]] = letter
 
@@ -128,6 +131,7 @@ class CreateWordSearch:
         return True
 
     def check_horizontal(self, start: tuple, word: str) -> bool:
+        """Executes logic to attempt horizontal placement of word"""
         test_grid = deepcopy(self.grid)
 
         for idx, letter in enumerate(word):
@@ -143,6 +147,7 @@ class CreateWordSearch:
         return True
 
     def check_diagonal(self, start: tuple, word: str) -> bool:
+        """Executes logic to attempt diagonal placement of word"""
         test_grid = deepcopy(self.grid)
 
         for idx, letter in enumerate(word):
@@ -158,6 +163,7 @@ class CreateWordSearch:
         return True
 
     def fill_grid(self):
+        """Fill the empty spots on the grid with random letters"""
         fill_opts = list(string.ascii_uppercase)
         for idx, row in enumerate(self.grid):
             for i, col in enumerate(row):
@@ -165,12 +171,14 @@ class CreateWordSearch:
                     self.grid[idx][i] = random.choice(fill_opts)
 
     def write_grid(self, filename: str):
+        """Write the grid to a text file"""
         with open(filename, "w") as write_file:
             for row in self.grid:
                 write_file.write(" ".join(row))
                 write_file.write("\n")
 
     def write_words(self, filename: str):
+        """Write the word list to the text file below the grid"""
         with open(filename, "a") as write_file:
             write_file.write("\n")
             for word in self.words:
